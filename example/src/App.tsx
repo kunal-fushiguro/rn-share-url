@@ -1,8 +1,6 @@
 import { Text, View, StyleSheet, Pressable } from 'react-native';
 import { shareUrl } from 'rn-share-url';
 
-// const result = multiply(3, 7);
-
 export default function App() {
   return (
     <View style={styles.container}>
