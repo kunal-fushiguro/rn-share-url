@@ -1,6 +1,6 @@
 {
   "name": "rn-share-url",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "rn-share-url help u to share url with the react native application ",
   "main": "./lib/module/index.js",
   "types": "./lib/typescript/src/index.d.ts",
