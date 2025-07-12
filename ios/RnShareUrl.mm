@@ -7,15 +7,36 @@ RCT_EXPORT_MODULE()
 
 - (void)shareUrl:(NSString *)url {
   dispatch_async(dispatch_get_main_queue(), ^{
-    NSURL *shareURL = [NSURL URLWithString:url];
-    NSArray *items = @[shareURL];
+    if (url == nil || [url length] == 0) {
+      NSLog(@"[ShareError] URL string is nil or empty.");
+      return;
+    }
 
+    NSURL *shareURL = [NSURL URLWithString:url];
+    if (shareURL == nil) {
+      NSLog(@"[ShareError] Failed to create NSURL from string: %@", url);
+      return;
+    }
+
+    NSArray *items = @[shareURL];
     UIActivityViewController *activityVC = [[UIActivityViewController alloc] initWithActivityItems:items applicationActivities:nil];
 
     UIViewController *rootVC = RCTPresentedViewController();
-    [rootVC presentViewController:activityVC animated:YES completion:nil];
+    if (rootVC == nil) {
+      NSLog(@"[ShareError] Failed to get root view controller.");
+      return;
+    }
+
+    if (rootVC.presentedViewController) {
+      NSLog(@"[ShareWarning] Root view controller is already presenting another view controller.");
+    }
+
+    [rootVC presentViewController:activityVC animated:YES completion:^{
+      NSLog(@"[ShareInfo] UIActivityViewController presented successfully.");
+    }];
   });
 }
+
 
 
 - (std::shared_ptr<facebook::react::TurboModule>)getTurboModule:

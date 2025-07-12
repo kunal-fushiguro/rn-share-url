@@ -54,16 +54,3 @@ To contribute, see the [contributing guide](CONTRIBUTING.md).
 ## License
 
 MIT
-
-```
-
----
-
-## 📌 Notes:
-- Updated function name to `shareUrl`.
-- Removed `multiply`, which appears to be leftover from the template.
-- Added example usage with a real-world scenario.
-- Added a note about TurboModules.
-
-Let me know if you want to include troubleshooting steps (e.g. for TurboModule setup or codegen).
-```
